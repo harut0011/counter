@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="welcome-page">
+        <div class="loading">
+            <div id="name"></div>
+            <div id="main_icon"></div>
+        </div>
+        <div class="choose">
+            <button class="massa-btn">Масса кольца</button>
+        </div>
+    </div>
+    <main>
+        <div class="container">
+            <form action="#" method="get">
+                <div class="sechenie">
+                    <p>Сечение</p>
+                    <input type="radio" name="sechenie" id="r1">
+                    <label for="r1">Полукруглое</label><br>
+                    <input type="radio" name="sechenie" id="r2">
+                    <label for="r2">Прямоугольное</label>
+                </div>
+                <div class="size">
+                    <input placeholder="Размер" type="number" name="size" class="befRes">
+                </div>
+                <div class="width">
+                    <input placeholder="Ширина, мм" type="number" class="befRes">
+                </div>
+                <div class="thickness">
+                    <input type="number" placeholder="Толщина, мм" class="befRes">
+                </div>
+                <div class="metal">
+                    <select name="metals">
+                        <option value="Красное Золото 585°">Золото 585° красное</option>
+                        <option checked value="Лимонное Золото 585°">Золото 585° лимонное</option>
+                        <option value="Беоле Золото 585°">Золото 585° белое</option>
+                        <option value="Золото 750°">Золото 750°</option>
+                        <option value="Серебро 925°">Серебро 925°</option>
+                    </select>
+                </div>
+            </form>
+            <div class="submit">
+                <button id="submit-btn">Подтвердить</button>
+            </div>
+        </div>
+    </main>
+    <div class="res-window">
+        <div class="container">
+            <div id="sechenie-res">Сечение: </div>
+            <div id="size-res" class="res">Размер: </div>
+            <div id="width-res" class="res">Ширина: </div>
+            <div id="thickness-res" class="res">Толщина: </div>
+            <div id="metal-res">Металл: </div>
+            <div id="massa"></div>
+        </div>
+        <button class="res-back-btn">Назад</button>  
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
+<!-- ° -->
