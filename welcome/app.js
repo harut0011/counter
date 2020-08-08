@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const massaBtn = document.querySelector('.massa-btn'),
-        animBtn = document.querySelector('.btn-anim'),
-        welcomePage = document.querySelector('.welcome-page'),
-        main = document.querySelector('main');
+          animBtn = document.querySelector('.btn-anim'),
+          welcomePage = document.querySelector('.welcome-page'),
+          main = document.querySelector('main');
 
     massaBtn.addEventListener('click', (e) => {
         setTimeout(() => welcomePage.style.opacity = 0, 300);
@@ -24,12 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
         resWindow.classList.toggle('res-window-on');
         document.querySelector('.res-window .container').classList.toggle('res-cont-on');
         main.style.filter = 'blur(15px)';
+        
 
         ress.forEach((item, index) => {
-            item.innerHTML += befRess[index].value;
+            item.innerHTML += `<br>${befRess[index].value}`;
         })
+        document.querySelector('#metal-res').innerHTML += `<br>${document.querySelector('select[name="metals"]').value}`;
 
-        document.querySelector('#metal-res').innerHTML += document.querySelector('select[name="metals"]').value;
+        const sechenies = document.querySelectorAll('input[name="sechenie"]');
+        sechenies.forEach(item => {
+            let label = document.querySelector(`[for="${item.id}"]`);
+            if (item.checked == true) document.querySelector('#sechenie-res').innerHTML += `<br>${label.innerHTML}`;
+        })  
+        const massa = document.querySelector('#massa');
+        console.log(Math.PI)
     })
 
     const resBackBtn = document.querySelector('.res-back-btn'),
@@ -39,17 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
         resWindow.classList.toggle('res-window-on');
         document.querySelector('.res-window .container').classList.toggle('res-cont-on');
         main.style.filter = 'blur(0px)';
-
         ress.forEach((item, index) => {
             item.innerHTML = resValues[index];
         })
-
         document.querySelector('#metal-res').innerHTML = resValues[4];
+        document.querySelector('#sechenie-res').innerHTML = resValues[0];
 
-        
     })
-    let counting = () => {
-        let massa = document.querySelector('#massa');
-        cost.innerHTML = `Цена : ${(Math.PI * document.querySelector('.thickness input.value') * document.querySelector('.width input.value') * (document.querySelector('.size input.value') + document.querySelector('.thickness input.value'))) / 1000 * }`
-    }
 })
