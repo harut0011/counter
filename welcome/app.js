@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
           resWindow = document.querySelector('.res-window'),
           befRess = document.querySelectorAll('.befRes'),
           ress = document.querySelectorAll('.res');
+          weight = document.querySelector('#massa');
+          select = document.querySelector('select');
 
     submitBtn.addEventListener('click', () => {
         resWindow.classList.toggle('res-window-on');
@@ -32,12 +34,32 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#metal-res').innerHTML += `<br>${document.querySelector('select[name="metals"]').value}`;
 
         const sechenies = document.querySelectorAll('input[name="sechenie"]');
+        let lenghtRes = document.querySelector('#length-res');
+
+
+        let w = +document.querySelector('input[name="width"]').value,
+            s = +document.querySelector('input[name="size"]').value,
+            tn = +document.querySelector('input[name="thickness"]').value,
+            ro = +select.options[select.selectedIndex].getAttribute('data-ro');
+
+        lenghtRes.innerHTML += (s * Math.PI).toFixed(2);
         sechenies.forEach(item => {
             let label = document.querySelector(`[for="${item.id}"]`);
-            if (item.checked == true) document.querySelector('#sechenie-res').innerHTML += `<br>${label.innerHTML}`;
+            if (item.checked == true) {
+                document.querySelector('#sechenie-res').innerHTML += `<br>${label.innerHTML}`;
+                if (label.innerHTML === 'Прямоугольное') {
+                    console.log(w, s, tn)
+                    weight.innerHTML += (((Math.PI * w * tn * (s + tn)) / 1000) * ro).toFixed(2);
+                } else {
+                    weight.innerHTML += (((2 * Math.PI * w * tn * (s + tn)) / 3000) * ro).toFixed(2);
+                }
+            }
         })  
-        const massa = document.querySelector('#massa');
-        console.log(Math.PI)
+        
+        
+        // select.options[select.selectedIndex].getAttribute('data-ro')   ----   getting the ro option from data-ro attribute
+        
+
     })
 
     const resBackBtn = document.querySelector('.res-back-btn'),
@@ -53,5 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#metal-res').innerHTML = resValues[4];
         document.querySelector('#sechenie-res').innerHTML = resValues[0];
 
+        weight.innerHTML = 'Вес: ';
+        lenghtRes.innerHTML = 'Длина: '
     })
 })
